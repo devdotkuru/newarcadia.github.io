@@ -89,45 +89,41 @@
       <h1>New Arcadia Modpack</h1>
       <p>
         Host and share the official New Arcadia Minecraft modpack right from this
-        site. Drop your exported modpack archive into the versioned folders and
-        this page will stay up to date.
+        site. Keep a copy of the newest export at
+        <code>mc/v/latest/modpack.zip</code> and players will always get the
+        freshest build from the permanent link below.
       </p>
 
       <a class="button" href="/mc/v/latest/">Download the latest modpack</a>
 
       <section>
-        <h2>How versioning works</h2>
-        <p>
-          Each release lives in <code>mc/v/&lt;version&gt;</code> with the exported
-          pack archive. The <code>latest</code> folder automatically points people
-          to the newest version so you can share
-          <code>new-arcadia.net/mc/v/latest</code> everywhere.
-        </p>
+        <h2>Publishing checklist</h2>
         <ul>
           <li>
-            Copy your exported modpack (e.g. <code>NewArcadia-1.2.0.zip</code>) to
-            <code>mc/v/releases/1.2.0/</code>.
+            Export your pack as a single <code>.zip</code>.
           </li>
           <li>
-            Update <code>mc/v/latest/latest.json</code> so the
-            <code>downloadUrl</code> points to the new archive.
+            Overwrite <code>mc/v/latest/modpack.zip</code> with the new file so
+            <code>new-arcadia.net/mc/v/latest</code> stays current.
           </li>
           <li>
-            Commit the changes and push to publish the update instantly.
+            (Optional) Archive the same file inside
+            <code>mc/v/releases/&lt;version&gt;/</code> for historical downloads.
           </li>
         </ul>
       </section>
 
       <section>
-        <h2>Automation ready</h2>
+        <h2>Version history</h2>
         <p>
-          You can also script the update process. Replace the file in the
-          releases folder, bump the JSON entry, and your CI can handle the rest.
+          Maintain a changelog or extra download links in the
+          <a href="/mc/v/">version archive</a> so people can roll back if
+          needed.
         </p>
       </section>
 
       <footer>
-        Looking for older builds? Browse <a href="/mc/v/">all versions</a>.
+        Need help publishing? Follow the README instructions in the repository.
       </footer>
     </main>
   </body>
