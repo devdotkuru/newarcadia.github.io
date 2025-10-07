@@ -1,6 +1,11 @@
 {
-  "downloadUrl": "https://drive.google.com/uc?export=download&id=1jqeY63WyuhW3p_T7AzHD1dByIE5TeCLN",
+  "downloadUrl": "https://www.dropbox.com/scl/fi/w2c0jt21crrrlosnfgc18/mods.zip?rlkey=dsmrcn8hky6re7s64xbo3n9lb&st=s32kjfva&dl=0",
   "buttonText": "Download the modpack",
-  "lastUpdated": "2025-07-10T00:00:00Z",
-  "notes": "v2025.7.10"
+  "version": "2025.7.10",
+  "patchNotes": [
+    {
+      "type": "update",
+      "entry": "The modpack now runs in a server"
+    }
+  ]
 }
