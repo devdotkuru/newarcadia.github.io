@@ -147,14 +147,12 @@
       .patch-note-rows {
         display: flex;
         flex-direction: column;
-        gap: 0.85rem;
+        gap: 1.5rem;
       }
 
       .patch-note-row {
         display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.6rem;
+        flex-direction: column;
       }
 
       .patch-note-label {
@@ -167,44 +165,32 @@
         background: rgba(15, 23, 42, 0.6);
         border: 1px solid rgba(148, 163, 184, 0.4);
         color: #94a3b8;
+        display: inline-block;
+        width: fit-content;
+        margin-bottom: 0.6rem;
       }
 
-      .patch-note-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        padding: 0.5rem 0.95rem;
-        border-radius: 999px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        letter-spacing: 0.01em;
-        background: rgba(148, 163, 184, 0.18);
-        color: #e2e8f0;
-        box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.35);
+      /* List-style patch notes */
+      .patch-note-list {
+        margin: 0.25rem 0 0;
+        padding-left: 1.4rem;
       }
 
-      .patch-note-pill::before {
-        content: attr(data-symbol);
-        font-size: 1rem;
-        line-height: 1;
+      .patch-note-list li {
+        margin: 0.35rem 0;
+        line-height: 1.6;
       }
 
-      .patch-note-add {
-        background: linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(16, 185, 129, 0.38));
-        color: #bbf7d0;
-        box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.45);
+      .patch-note-add li::marker {
+        color: #34d399;
       }
 
-      .patch-note-remove {
-        background: linear-gradient(135deg, rgba(248, 113, 113, 0.18), rgba(248, 113, 113, 0.38));
-        color: #fecaca;
-        box-shadow: inset 0 0 0 1px rgba(248, 113, 113, 0.45);
+      .patch-note-update li::marker {
+        color: #60a5fa;
       }
 
-      .patch-note-update {
-        background: linear-gradient(135deg, rgba(96, 165, 250, 0.18), rgba(96, 165, 250, 0.38));
-        color: #bfdbfe;
-        box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.45);
+      .patch-note-remove li::marker {
+        color: #f87171;
       }
 
       .server-callout {
@@ -272,12 +258,9 @@
         import it into your launcher, and you're ready to go.
       </p>
 
-      <a
-        class="button"
-        href="#"
-        aria-disabled="true"
-        data-download-button
-      >Preparing download…</a>
+      <a class="button" href="#" aria-disabled="true" data-download-button>
+        Preparing download…
+      </a>
       <p class="status" data-status-message>
         Checking for the latest build. Please wait…
       </p>
@@ -333,67 +316,38 @@
       ]);
 
       const typeMeta = [
-        {
-          key: 'add',
-          label: 'Additions',
-          pillClass: 'patch-note-add',
-          symbol: '+',
-        },
-        {
-          key: 'update',
-          label: 'Updates',
-          pillClass: 'patch-note-update',
-          symbol: '★',
-        },
-        {
-          key: 'remove',
-          label: 'Removals',
-          pillClass: 'patch-note-remove',
-          symbol: '−',
-        },
+        { key: 'add', label: 'Additions', pillClass: 'patch-note-add', symbol: '+' },
+        { key: 'update', label: 'Updates', pillClass: 'patch-note-update', symbol: '★' },
+        { key: 'remove', label: 'Removals', pillClass: 'patch-note-remove', symbol: '−' },
       ];
 
       async function hydrateDownloadButton() {
         try {
-          const response = await fetch('./direct-download.json', {
-            cache: 'no-store',
-          });
-
-          if (!response.ok) {
-            throw new Error(`Request failed with status ${response.status}`);
-          }
+          const response = await fetch('./direct-download.json', { cache: 'no-store' });
+          if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
 
           const data = await response.json();
           const url = (data.downloadUrl || '').trim();
           const version = (data.version || '').trim();
 
-          if (!url) {
-            throw new Error('Missing downloadUrl in JSON.');
-          }
+          if (!url) throw new Error('Missing downloadUrl in JSON.');
 
           button.href = url;
           button.removeAttribute('aria-disabled');
           button.textContent = data.buttonText || 'Download the modpack';
-
           status.textContent = 'Latest build ready for download.';
 
           if (version && versionChip) {
             versionChip.textContent = `Version ${version}`;
             versionChip.hidden = false;
-            if (patchHeading) {
-              patchHeading.textContent = `Patch notes ${version}`;
-            }
+            if (patchHeading) patchHeading.textContent = `Patch notes ${version}`;
           } else if (patchHeading) {
             patchHeading.textContent = 'Patch notes';
           }
 
           if (patchNotesSection && patchRows && patchEmpty) {
             patchEmpty.textContent = defaultEmptyMessage;
-
-            const notes = Array.isArray(data.patchNotes)
-              ? data.patchNotes
-              : [];
-
+            const notes = Array.isArray(data.patchNotes) ? data.patchNotes : [];
             const grouped = new Map(typeMeta.map(({ key }) => [key, []]));
 
             notes.forEach((note) => {
@@ -405,14 +359,11 @@
             });
 
             const hasAny = typeMeta.some(({ key }) => grouped.get(key)?.length);
-
             if (hasAny) {
               patchRows.innerHTML = '';
-
-              typeMeta.forEach(({ key, label, pillClass, symbol }) => {
+              typeMeta.forEach(({ key, label, pillClass }) => {
                 const entries = grouped.get(key) || [];
                 if (!entries.length) return;
-
                 const row = document.createElement('div');
                 row.classList.add('patch-note-row');
 
@@ -421,17 +372,17 @@
                 badgeLabel.textContent = label;
                 row.appendChild(badgeLabel);
 
+                const list = document.createElement('ul');
+                list.classList.add('patch-note-list', pillClass);
                 entries.forEach((entry) => {
-                  const pill = document.createElement('span');
-                  pill.classList.add('patch-note-pill', pillClass);
-                  pill.dataset.symbol = symbol;
-                  pill.textContent = entry;
-                  row.appendChild(pill);
+                  const li = document.createElement('li');
+                  li.textContent = entry;
+                  list.appendChild(li);
                 });
 
+                row.appendChild(list);
                 patchRows.appendChild(row);
               });
-
               patchEmpty.hidden = true;
               patchRows.hidden = false;
             } else {
@@ -448,20 +399,14 @@
           button.textContent = 'Direct download unavailable';
           status.textContent =
             'Download unavailable right now. Please check back soon or contact the admins for an update.';
-
-          if (versionChip) {
-            versionChip.hidden = true;
-          }
-
+          if (versionChip) versionChip.hidden = true;
           if (patchNotesSection && patchEmpty && patchRows) {
             patchNotesSection.hidden = false;
             patchEmpty.hidden = false;
             patchEmpty.textContent = 'Patch notes unavailable while the download link is offline.';
             patchRows.hidden = true;
             patchRows.innerHTML = '';
-            if (patchHeading) {
-              patchHeading.textContent = 'Patch notes';
-            }
+            if (patchHeading) patchHeading.textContent = 'Patch notes';
           }
         }
       }
