@@ -2,9 +2,11 @@
   "downloadUrl": "https://www.dropbox.com/scl/fi/w2c0jt21crrrlosnfgc18/mods.zip?rlkey=dsmrcn8hky6re7s64xbo3n9lb&st=s32kjfva&dl=1",
   "buttonText": "Download the modpack",
   "version": "2025.7.10",
+  "mcVersion": "1.20.1",
+  "forgeVersion": "47.4.9",
   "patchNotes": [
     {
-      "type": "feature",
+      "type": "add",
       "entry": "The modpack can now run on a server."
     },
     {
