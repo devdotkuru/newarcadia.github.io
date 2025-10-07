@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Latest New Arcadia Modpack</title>
+    <style>
+      body {
+        margin: 0;
+        padding: clamp(2rem, 5vw, 3.5rem);
+        font-family: 'Montserrat', system-ui, sans-serif;
+        background: linear-gradient(160deg, #0f172a, #1e293b 55%, #0ea5e9);
+        color: #f8fafc;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      main {
+        max-width: 640px;
+        width: 100%;
+        background: rgba(15, 23, 42, 0.78);
+        border-radius: 20px;
+        padding: clamp(2rem, 4vw, 3rem);
+        box-shadow: 0 24px 48px rgba(8, 47, 73, 0.35);
+        backdrop-filter: blur(12px);
+      }
+
+      h1 {
+        margin-top: 0;
+        font-size: clamp(2rem, 4vw, 2.8rem);
+      }
+
+      p {
+        line-height: 1.6;
+      }
+
+      a.button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.85rem 1.9rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #22d3ee, #38bdf8);
+        color: #0f172a;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 18px 36px rgba(34, 211, 238, 0.35);
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      a.button:hover,
+      a.button:focus-visible {
+        transform: translateY(-2px);
+        box-shadow: 0 24px 44px rgba(34, 211, 238, 0.45);
+      }
+
+      .meta {
+        margin-top: 1.2rem;
+        font-size: 0.95rem;
+        opacity: 0.85;
+      }
+
+      .error {
+        padding: 1rem 1.4rem;
+        border-radius: 14px;
+        background: rgba(248, 113, 113, 0.12);
+        border: 1px solid rgba(248, 113, 113, 0.35);
+        color: #fecaca;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Latest modpack build</h1>
+      <p id="status">Fetching metadata…</p>
+      <div id="download"></div>
+      <div id="meta" class="meta"></div>
+    </main>
+
+    <script>
+      async function init() {
+        const status = document.getElementById('status');
+        const download = document.getElementById('download');
+        const meta = document.getElementById('meta');
+
+        try {
+          const response = await fetch('./latest.json', { cache: 'no-cache' });
+          if (!response.ok) {
+            throw new Error(`latest.json returned ${response.status}`);
+          }
+
+          const info = await response.json();
+
+          if (!info.downloadUrl) {
+            status.innerHTML =
+              "Add your exported modpack and update <code>latest.json</code> to share it.";
+            status.className = 'error';
+            return;
+          }
+
+          status.textContent = info.tagline || 'Ready to download and play.';
+
+          const link = document.createElement('a');
+          link.href = info.downloadUrl;
+          link.textContent = info.buttonLabel || 'Download modpack (.zip)';
+          link.className = 'button';
+          download.appendChild(link);
+
+          const details = [];
+          if (info.version) {
+            details.push(`Version ${info.version}`);
+          }
+          if (info.updatedAt) {
+            details.push(`Updated ${info.updatedAt}`);
+          }
+          if (info.fileSize) {
+            details.push(info.fileSize);
+          }
+          meta.textContent = details.join(' • ');
+        } catch (error) {
+          console.error(error);
+          status.textContent = 'latest.json is missing or malformed.';
+          status.className = 'error';
+        }
+      }
+
+      init();
+    </script>
+  </body>
+</html>
