@@ -98,18 +98,66 @@
         opacity: 0.9;
       }
 
-      .version-chip {
+      /* ---- Version chips ---- */
+      .version-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+      }
+
+      .chip {
         display: inline-flex;
         align-items: center;
-        gap: 0.4rem;
+        gap: 0.45rem;
         padding: 0.35rem 0.85rem;
         border-radius: 999px;
+        font-weight: 700;
+        font-size: 0.92rem;
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+        user-select: none;
+        line-height: 1;
+      }
+
+      .chip .dot {
+        display: inline-block;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 999px;
+      }
+
+      /* Modpack (blue) */
+      .chip--pack {
         background: rgba(37, 99, 235, 0.16);
         border: 1px solid rgba(37, 99, 235, 0.45);
         color: #bfdbfe;
-        font-weight: 600;
-        font-size: 0.95rem;
-        margin-top: 0.75rem;
+      }
+      .chip--pack .dot {
+        background: #60a5fa;
+        box-shadow: 0 0 8px rgba(96, 165, 250, 0.7);
+      }
+
+      /* Minecraft (teal/green) */
+      .chip--mc {
+        background: rgba(13, 148, 136, 0.16);
+        border: 1px solid rgba(13, 148, 136, 0.45);
+        color: #a7f3d0;
+      }
+      .chip--mc .dot {
+        background: #34d399;
+        box-shadow: 0 0 8px rgba(52, 211, 153, 0.7);
+      }
+
+      /* Forge (amber/purple) */
+      .chip--forge {
+        background: rgba(147, 51, 234, 0.16);
+        border: 1px solid rgba(147, 51, 234, 0.45);
+        color: #e9d5ff;
+      }
+      .chip--forge .dot {
+        background: #f59e0b;
+        box-shadow: 0 0 8px rgba(245, 158, 11, 0.7);
       }
 
       section {
@@ -264,7 +312,22 @@
       <p class="status" data-status-message>
         Checking for the latest build. Please wait…
       </p>
-      <span class="version-chip" data-version hidden>Version</span>
+
+      <!-- Separated version chips -->
+      <div class="version-chips" data-version-chips hidden>
+        <span class="chip chip--pack" data-chip-pack hidden aria-label="Modpack Version">
+          <span class="dot" aria-hidden="true"></span>
+          <span data-chip-pack-text>Modpack — v0.0.0</span>
+        </span>
+        <span class="chip chip--mc" data-chip-mc hidden aria-label="Minecraft Version">
+          <span class="dot" aria-hidden="true"></span>
+          <span data-chip-mc-text>MC — 0.0.0</span>
+        </span>
+        <span class="chip chip--forge" data-chip-forge hidden aria-label="Forge Version">
+          <span class="dot" aria-hidden="true"></span>
+          <span data-chip-forge-text>Forge — 0.0.0</span>
+        </span>
+      </div>
 
       <section class="patch-notes" data-patch-notes hidden>
         <h2>Patch notes</h2>
@@ -294,7 +357,16 @@
     <script>
       const button = document.querySelector('[data-download-button]');
       const status = document.querySelector('[data-status-message]');
-      const versionChip = document.querySelector('[data-version]');
+
+      // Version chips
+      const chipsContainer = document.querySelector('[data-version-chips]');
+      const chipPack = document.querySelector('[data-chip-pack]');
+      const chipPackText = document.querySelector('[data-chip-pack-text]');
+      const chipMc = document.querySelector('[data-chip-mc]');
+      const chipMcText = document.querySelector('[data-chip-mc-text]');
+      const chipForge = document.querySelector('[data-chip-forge]');
+      const chipForgeText = document.querySelector('[data-chip-forge-text]');
+
       const patchNotesSection = document.querySelector('[data-patch-notes]');
       const patchHeading = patchNotesSection?.querySelector('h2');
       const patchRows = patchNotesSection?.querySelector('[data-patch-rows]');
@@ -321,6 +393,14 @@
         { key: 'remove', label: 'Removals', pillClass: 'patch-note-remove', symbol: '−' },
       ];
 
+      function getString(...candidates) {
+        for (const c of candidates) {
+          const v = (typeof c === 'function' ? c() : c) ?? '';
+          if (typeof v === 'string' && v.trim()) return v.trim();
+        }
+        return '';
+      }
+
       async function hydrateDownloadButton() {
         try {
           const response = await fetch('./direct-download.json', { cache: 'no-store' });
@@ -328,7 +408,11 @@
 
           const data = await response.json();
           const url = (data.downloadUrl || '').trim();
-          const version = (data.version || '').trim();
+
+          // Flexible keys so you don't have to rename your JSON
+          const packVersion = getString(data.version, data.modpackVersion, data.packVersion);
+          const mcVersion = getString(data.mcVersion, data.minecraftVersion, () => data.minecraft?.version);
+          const forgeVersion = getString(data.forgeVersion, () => data.forge?.version);
 
           if (!url) throw new Error('Missing downloadUrl in JSON.');
 
@@ -337,14 +421,33 @@
           button.textContent = data.buttonText || 'Download the modpack';
           status.textContent = 'Latest build ready for download.';
 
-          if (version && versionChip) {
-            versionChip.textContent = `Version ${version} - 1.20.1 MC - Forge 47.4.9`;
-            versionChip.hidden = false;
-            if (patchHeading) patchHeading.textContent = `Patch notes ${version}`;
+          // Chips: show only what we have, container shows if any chip is visible
+          let anyChip = false;
+
+          if (packVersion) {
+            chipPackText.textContent = `Modpack — v${packVersion.replace(/^v/i, '')}`;
+            chipPack.hidden = false;
+            anyChip = true;
+            if (patchHeading) patchHeading.textContent = `Patch notes v${packVersion.replace(/^v/i, '')}`;
           } else if (patchHeading) {
             patchHeading.textContent = 'Patch notes';
           }
 
+          if (mcVersion) {
+            chipMcText.textContent = `MC — ${mcVersion}`;
+            chipMc.hidden = false;
+            anyChip = true;
+          }
+
+          if (forgeVersion) {
+            chipForgeText.textContent = `Forge — ${forgeVersion}`;
+            chipForge.hidden = false;
+            anyChip = true;
+          }
+
+          chipsContainer.hidden = !anyChip;
+
+          // Patch notes
           if (patchNotesSection && patchRows && patchEmpty) {
             patchEmpty.textContent = defaultEmptyMessage;
             const notes = Array.isArray(data.patchNotes) ? data.patchNotes : [];
@@ -399,7 +502,13 @@
           button.textContent = 'Direct download unavailable';
           status.textContent =
             'Download unavailable right now. Please check back soon or contact the admins for an update.';
-          if (versionChip) versionChip.hidden = true;
+
+          // Hide chips on error
+          chipsContainer.hidden = true;
+          chipPack.hidden = true;
+          chipMc.hidden = true;
+          chipForge.hidden = true;
+
           if (patchNotesSection && patchEmpty && patchRows) {
             patchNotesSection.hidden = false;
             patchEmpty.hidden = false;
