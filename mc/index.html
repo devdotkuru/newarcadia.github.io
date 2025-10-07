@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>New Arcadia Minecraft Modpack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont,
+          'Segoe UI', sans-serif;
+        background: radial-gradient(circle at top, #f7f8fc, #d8ddf0);
+        min-height: 100%;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      main {
+        background: rgba(17, 25, 40, 0.85);
+        color: #f8fbff;
+        border-radius: 24px;
+        padding: clamp(2rem, 5vw, 3.5rem);
+        max-width: 720px;
+        width: 100%;
+        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
+        backdrop-filter: blur(18px);
+      }
+
+      h1 {
+        margin-top: 0;
+        font-size: clamp(2rem, 5vw, 2.8rem);
+        line-height: 1.1;
+      }
+
+      p {
+        line-height: 1.65;
+      }
+
+      a.button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.85rem 1.8rem;
+        border-radius: 999px;
+        font-weight: 600;
+        text-decoration: none;
+        color: #0f172a;
+        background: linear-gradient(135deg, #38bdf8, #22d3ee);
+        box-shadow: 0 12px 24px rgba(56, 189, 248, 0.35);
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      a.button:hover,
+      a.button:focus-visible {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 32px rgba(56, 189, 248, 0.45);
+      }
+
+      section {
+        margin-top: 2rem;
+      }
+
+      ul {
+        padding-left: 1.2rem;
+      }
+
+      footer {
+        margin-top: 2.4rem;
+        font-size: 0.85rem;
+        opacity: 0.75;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>New Arcadia Modpack</h1>
+      <p>
+        Host and share the official New Arcadia Minecraft modpack right from this
+        site. Drop your exported modpack archive into the versioned folders and
+        this page will stay up to date.
+      </p>
+
+      <a class="button" href="/mc/v/latest/">Download the latest modpack</a>
+
+      <section>
+        <h2>How versioning works</h2>
+        <p>
+          Each release lives in <code>mc/v/&lt;version&gt;</code> with the exported
+          pack archive. The <code>latest</code> folder automatically points people
+          to the newest version so you can share
+          <code>new-arcadia.net/mc/v/latest</code> everywhere.
+        </p>
+        <ul>
+          <li>
+            Copy your exported modpack (e.g. <code>NewArcadia-1.2.0.zip</code>) to
+            <code>mc/v/releases/1.2.0/</code>.
+          </li>
+          <li>
+            Update <code>mc/v/latest/latest.json</code> so the
+            <code>downloadUrl</code> points to the new archive.
+          </li>
+          <li>
+            Commit the changes and push to publish the update instantly.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Automation ready</h2>
+        <p>
+          You can also script the update process. Replace the file in the
+          releases folder, bump the JSON entry, and your CI can handle the rest.
+        </p>
+      </section>
+
+      <footer>
+        Looking for older builds? Browse <a href="/mc/v/">all versions</a>.
+      </footer>
+    </main>
+  </body>
+</html>
