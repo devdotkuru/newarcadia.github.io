@@ -5,7 +5,11 @@
   "patchNotes": [
     {
       "type": "update",
-      "entry": "The modpack now runs in a server"
+      "entry": "The modpack can now run on a server."
+    },
+    {
+      "type": "update",
+      "entry": "Updated 6 mods to their latest versions."
     }
   ]
 }
