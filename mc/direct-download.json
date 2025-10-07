@@ -4,7 +4,7 @@
   "version": "2025.7.10",
   "patchNotes": [
     {
-      "type": "update",
+      "type": "feature",
       "entry": "The modpack can now run on a server."
     },
     {
