@@ -1,17 +1,25 @@
 {
-  "downloadUrl": "https://www.dropbox.com/scl/fi/w2c0jt21crrrlosnfgc18/mods.zip?rlkey=dsmrcn8hky6re7s64xbo3n9lb&st=s32kjfva&dl=1",
+  "downloadUrl": "https://www.dropbox.com/scl/fi/w2c0jt21crrrlosnfgc18/mods.zip?rlkey=dsmrcn8hky6re7s64xbo3n9lb&st=dwoxvls9&dl=1",
   "buttonText": "Download the modpack",
-  "version": "2025.7.10",
+  "version": "2025.10.10",
   "mcVersion": "1.20.1",
   "forgeVersion": "47.4.9",
   "patchNotes": [
     {
       "type": "add",
-      "entry": "The modpack can now run on a server."
+      "entry": "Added Refined Storage Addons. introduces the Wireless Crafting Grid, extending Refined Storage with crafting functionality for wireless grids."
     },
     {
-      "type": "update",
-      "entry": "Updated 6 mods to their latest versions."
+      "type": "add",
+      "entry": "Added Reborn Storage. a Refined Storage add-on featuring multi-block pattern crafters (up to 16x16) and larger item/fluid storage disks, improving crafting performance and storage scalability."
+    },
+    {
+      "type": "add",
+      "entry": "Added PolyLi. a lightweight library providing helper classes for GUI creation and other development tools to enhance mod efficiency and user experience."
+    },
+    {
+      "type": "add",
+      "entry": "Added Architectury API. a developer-focused framework that simplifies cross-modloader mod creation, offering a full build system and optional abstraction layers to streamline development."
     }
   ]
 }
