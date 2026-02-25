@@ -13,7 +13,7 @@ hero:
   description: "One-click discovery and installation for Halo Wars Definitive Edition and Halo Wars 2 mods."
   ctas:
     - label: "Download launcher"
-      url: "/haruspis/"
+      url: "https://www.new-arcadia.net/haruspis/"
     - label: "Join Discord"
       url: "https://www.new-arcadia.net/discord"
 ---

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Haruspis Launcher · New Arcadia</title>
+    <title>Asset Bundler · New Arcadia</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -241,31 +241,24 @@
           <p class="docs-hero__eyebrow">Tools</p>
         
         
-          <span class="docs-hero__status docs-hero__status--stable">
-            Stable
+          <span class="docs-hero__status docs-hero__status--wip">
+            Work In Progress
           </span>
         
       </div>
     
-    <h1>Haruspis Launcher</h1>
+    <h1>Asset Bundler</h1>
       
-        <p class="docs-hero__lead">One-click discovery and installation for Halo Wars Definitive Edition and Halo Wars 2 mods.</p>
+        <p class="docs-hero__lead">Convert textures, models, and data into Halo Wars-optimized archives.</p>
       
       
         <div class="docs-hero__ctas">
           
             <a
               class="cta docs-hero__cta primary"
-              href="https://www.new-arcadia.net/haruspis/"
+              href="/docs/tools/devkit/"
             >
-              Download launcher
-            </a>
-          
-            <a
-              class="cta docs-hero__cta ghost"
-              href="https://www.new-arcadia.net/discord"
-            >
-              Join Discord
+              Download assets
             </a>
           
         </div>
@@ -276,21 +269,18 @@
 </section>
 
         <div class="docs-content">
-          <h2 id="features">Features</h2>
-
-<ul>
-  <li>Workshop discovery with banners and icons.</li>
-  <li>Smart launch support for Steam, Microsoft Store, and manual installs.</li>
-  <li>Version history tracking per mod.</li>
-</ul>
-
-<h2 id="quick-start">Quick start</h2>
+          <h2 id="bundler-flow">Bundler flow</h2>
 
 <ol>
-  <li>Download Haruspis.</li>
-  <li>Link your Halo Wars installation.</li>
-  <li>Browse the mod library, install with one click, and launch instantly.</li>
+  <li>Drop your <code class="language-plaintext highlighter-rouge">*.gat</code> / <code class="language-plaintext highlighter-rouge">*.p3d</code> files into the <code class="language-plaintext highlighter-rouge">workspace/raw/</code> folder.</li>
+  <li>Update <code class="language-plaintext highlighter-rouge">manifest.yaml</code> with dependencies.</li>
+  <li>Run <code class="language-plaintext highlighter-rouge">bundler run --build</code>.</li>
 </ol>
+
+<div class="docs-card">
+  <h3>Roadmap</h3>
+  <p>Trust but verify: each release adds better warnings, Git-friendly metadata, and checksum support.</p>
+</div>
 
         </div>
       </main>

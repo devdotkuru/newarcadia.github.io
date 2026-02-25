@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Haruspis Launcher · New Arcadia</title>
+    <title>Formats · New Arcadia</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -238,7 +238,7 @@
     
       <div class="docs-hero__subtitle-row">
         
-          <p class="docs-hero__eyebrow">Tools</p>
+          <p class="docs-hero__eyebrow">Engine</p>
         
         
           <span class="docs-hero__status docs-hero__status--stable">
@@ -247,25 +247,18 @@
         
       </div>
     
-    <h1>Haruspis Launcher</h1>
+    <h1>File formats</h1>
       
-        <p class="docs-hero__lead">One-click discovery and installation for Halo Wars Definitive Edition and Halo Wars 2 mods.</p>
+        <p class="docs-hero__lead">A table of Halo Wars data formats, including Granny, WWise, and custom content archives.</p>
       
       
         <div class="docs-hero__ctas">
           
             <a
               class="cta docs-hero__cta primary"
-              href="https://www.new-arcadia.net/haruspis/"
+              href="https://github.com/HaloMods/HaloWarsDocs/blob/master/HaloWars1/FileFormats/_Core/README.md"
             >
-              Download launcher
-            </a>
-          
-            <a
-              class="cta docs-hero__cta ghost"
-              href="https://www.new-arcadia.net/discord"
-            >
-              Join Discord
+              Content article
             </a>
           
         </div>
@@ -276,21 +269,70 @@
 </section>
 
         <div class="docs-content">
-          <h2 id="features">Features</h2>
+          <h2 id="formats-table">Formats table</h2>
 
-<ul>
-  <li>Workshop discovery with banners and icons.</li>
-  <li>Smart launch support for Steam, Microsoft Store, and manual installs.</li>
-  <li>Version history tracking per mod.</li>
-</ul>
-
-<h2 id="quick-start">Quick start</h2>
-
-<ol>
-  <li>Download Haruspis.</li>
-  <li>Link your Halo Wars installation.</li>
-  <li>Browse the mod library, install with one click, and launch instantly.</li>
-</ol>
+<div class="table-wrapper">
+  <table class="docs-table">
+    <thead>
+      <tr>
+        <th>Format</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Reference</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Granny Mesh (.gm)</td>
+        <td>Geometry</td>
+        <td>Primary mesh archive, compatible with Granny 2.1.</td>
+        <td><a href="https://github.com/HaloMods/HaloWarsDocs/blob/master/HaloWars1/FileFormats/_Core/README.md">Core README</a></td>
+      </tr>
+      <tr>
+        <td>WWise Bank (.bnk)</td>
+        <td>Audio</td>
+        <td>Audio banks produced by WWise 2015 and consumed by Halo Wars 1.</td>
+        <td><a href="https://github.com/HaloMods/HaloWarsDocs/blob/master/HaloWars1/FileFormats/Content/README.md">Content README</a></td>
+      </tr>
+      <tr>
+        <td>Spam Archive (.f32)</td>
+        <td>Sounds</td>
+        <td>Holds sound effects mapped to WWise events.</td>
+        <td><a href="https://github.com/HaloMods/HaloWarsDocs/blob/master/HaloWars1/FileFormats/Content/README.md">Content README</a></td>
+      </tr>
+      <tr>
+        <td>Model Pack (.p3d)</td>
+        <td>Geometry</td>
+        <td>Bundled content read by Granny exporters.</td>
+        <td><a href="https://github.com/HaloMods/HaloWarsDocs/blob/master/HaloWars1/FileFormats/_Core/README.md">Core README</a></td>
+      </tr>
+      <tr>
+        <td>Effect Archive (.fls)</td>
+        <td>FX</td>
+        <td>Visual effect set used by the engine's particle systems.</td>
+        <td><a href="https://github.com/HaloMods/HaloWarsDocs/blob/master/HaloWars1/FileFormats/_Core/README.md">Core README</a></td>
+      </tr>
+      <tr>
+        <td>Localized text (.lrp)</td>
+        <td>Localization</td>
+        <td>Structured localized strings and glyph tables.</td>
+        <td><a href="https://github.com/HaloMods/HaloWarsDocs/blob/master/HaloWars1/FileFormats/Content/README.md">Content README</a></td>
+      </tr>
+      <tr>
+        <td>Transparency (.xtt)</td>
+        <td>Shaders</td>
+        <td>Shader permutations and pipeline hints consumed by the renderer.</td>
+        <td><a href="https://github.com/HaloMods/HaloWarsDocs/blob/master/HaloWars1/FileFormats/_Core/README.md">Core README</a></td>
+      </tr>
+      <tr>
+        <td>Custom Constants (.csf)</td>
+        <td>Script</td>
+        <td>Configuration tables used across the engine.</td>
+        <td><a href="https://github.com/HaloMods/HaloWarsDocs/blob/master/HaloWars1/FileFormats/_Core/README.md">Core README</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
         </div>
       </main>

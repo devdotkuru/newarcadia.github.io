@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Haruspis Launcher · New Arcadia</title>
+    <title>Granny pipeline · New Arcadia</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -238,7 +238,7 @@
     
       <div class="docs-hero__subtitle-row">
         
-          <p class="docs-hero__eyebrow">Tools</p>
+          <p class="docs-hero__eyebrow">Engine</p>
         
         
           <span class="docs-hero__status docs-hero__status--stable">
@@ -247,25 +247,18 @@
         
       </div>
     
-    <h1>Haruspis Launcher</h1>
+    <h1>Granny pipeline</h1>
       
-        <p class="docs-hero__lead">One-click discovery and installation for Halo Wars Definitive Edition and Halo Wars 2 mods.</p>
+        <p class="docs-hero__lead">Halo Wars ships with Granny 2.1, so exporters must match the same runtime expectations.</p>
       
       
         <div class="docs-hero__ctas">
           
             <a
               class="cta docs-hero__cta primary"
-              href="https://www.new-arcadia.net/haruspis/"
+              href="/docs/engine/formats/"
             >
-              Download launcher
-            </a>
-          
-            <a
-              class="cta docs-hero__cta ghost"
-              href="https://www.new-arcadia.net/discord"
-            >
-              Join Discord
+              Formats table
             </a>
           
         </div>
@@ -276,20 +269,20 @@
 </section>
 
         <div class="docs-content">
-          <h2 id="features">Features</h2>
+          <h2 id="granny-notes">Granny notes</h2>
 
 <ul>
-  <li>Workshop discovery with banners and icons.</li>
-  <li>Smart launch support for Steam, Microsoft Store, and manual installs.</li>
-  <li>Version history tracking per mod.</li>
+  <li>Granny version: 2.1.1.5</li>
+  <li>Mesh cache: <code class="language-plaintext highlighter-rouge">*.gm</code></li>
+  <li>Animations: stored as <code class="language-plaintext highlighter-rouge">*.gma</code> with event hooks.</li>
 </ul>
 
-<h2 id="quick-start">Quick start</h2>
+<h2 id="export-steps">Export steps</h2>
 
 <ol>
-  <li>Download Haruspis.</li>
-  <li>Link your Halo Wars installation.</li>
-  <li>Browse the mod library, install with one click, and launch instantly.</li>
+  <li>Export <code class="language-plaintext highlighter-rouge">*.gm</code> from Blender or 3ds Max.</li>
+  <li>Validate the bounding volumes and LODs with the bundler tool.</li>
+  <li>Import into Halo Wars via Haruspis.</li>
 </ol>
 
         </div>

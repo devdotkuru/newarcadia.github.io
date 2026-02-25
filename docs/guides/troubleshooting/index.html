@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Haruspis Launcher · New Arcadia</title>
+    <title>Troubleshooting · New Arcadia</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -238,7 +238,7 @@
     
       <div class="docs-hero__subtitle-row">
         
-          <p class="docs-hero__eyebrow">Tools</p>
+          <p class="docs-hero__eyebrow">Tips</p>
         
         
           <span class="docs-hero__status docs-hero__status--stable">
@@ -247,25 +247,18 @@
         
       </div>
     
-    <h1>Haruspis Launcher</h1>
+    <h1>Troubleshooting</h1>
       
-        <p class="docs-hero__lead">One-click discovery and installation for Halo Wars Definitive Edition and Halo Wars 2 mods.</p>
+        <p class="docs-hero__lead">Common fixes for dependency errors, launcher crashes, or missing assets.</p>
       
       
         <div class="docs-hero__ctas">
           
             <a
               class="cta docs-hero__cta primary"
-              href="https://www.new-arcadia.net/haruspis/"
+              href="/docs/tools/haruspis/"
             >
-              Download launcher
-            </a>
-          
-            <a
-              class="cta docs-hero__cta ghost"
-              href="https://www.new-arcadia.net/discord"
-            >
-              Join Discord
+              Haruspis support
             </a>
           
         </div>
@@ -276,20 +269,20 @@
 </section>
 
         <div class="docs-content">
-          <h2 id="features">Features</h2>
+          <h2 id="common-issues">Common issues</h2>
 
 <ul>
-  <li>Workshop discovery with banners and icons.</li>
-  <li>Smart launch support for Steam, Microsoft Store, and manual installs.</li>
-  <li>Version history tracking per mod.</li>
+  <li><strong>Missing DLLs</strong>: Ensure your Halo Wars install is intact and signed. Re-run the Haruspis installer if you see <code class="language-plaintext highlighter-rouge">msvcr120.dll</code> errors.</li>
+  <li><strong>Asset Bundler errors</strong>: Update the <code class="language-plaintext highlighter-rouge">sources.json</code> file inside <code class="language-plaintext highlighter-rouge">docs/tools/bundler/</code> or re-import the mod to refresh metadata.</li>
+  <li><strong>Discord presence stuck</strong>: Reconnect via the launcher’s OAuth flow.</li>
 </ul>
 
-<h2 id="quick-start">Quick start</h2>
+<h2 id="logging">Logging</h2>
 
 <ol>
-  <li>Download Haruspis.</li>
-  <li>Link your Halo Wars installation.</li>
-  <li>Browse the mod library, install with one click, and launch instantly.</li>
+  <li>Launch Haruspis with <code class="language-plaintext highlighter-rouge">--debug</code>.</li>
+  <li>Tail the log file (see <code class="language-plaintext highlighter-rouge">/logs/haruspis.log</code>).</li>
+  <li>Copy the last 40 lines into Discord for the team to inspect.</li>
 </ol>
 
         </div>

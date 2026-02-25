@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Haruspis Launcher · New Arcadia</title>
+    <title>Engine Reference · New Arcadia</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -238,7 +238,7 @@
     
       <div class="docs-hero__subtitle-row">
         
-          <p class="docs-hero__eyebrow">Tools</p>
+          <p class="docs-hero__eyebrow">Engine</p>
         
         
           <span class="docs-hero__status docs-hero__status--stable">
@@ -247,25 +247,25 @@
         
       </div>
     
-    <h1>Haruspis Launcher</h1>
+    <h1>Engine reference</h1>
       
-        <p class="docs-hero__lead">One-click discovery and installation for Halo Wars Definitive Edition and Halo Wars 2 mods.</p>
+        <p class="docs-hero__lead">Tables, format outlines, and compatibility notes for Halo Wars' rendering, audio, and data pipelines.</p>
       
       
         <div class="docs-hero__ctas">
           
             <a
               class="cta docs-hero__cta primary"
-              href="https://www.new-arcadia.net/haruspis/"
+              href="/docs/engine/formats/"
             >
-              Download launcher
+              Formats table
             </a>
           
             <a
               class="cta docs-hero__cta ghost"
-              href="https://www.new-arcadia.net/discord"
+              href="/docs/engine/granny/"
             >
-              Join Discord
+              Granny notes
             </a>
           
         </div>
@@ -276,21 +276,39 @@
 </section>
 
         <div class="docs-content">
-          <h2 id="features">Features</h2>
+          <h2 id="reference-areas">Reference areas</h2>
 
-<ul>
-  <li>Workshop discovery with banners and icons.</li>
-  <li>Smart launch support for Steam, Microsoft Store, and manual installs.</li>
-  <li>Version history tracking per mod.</li>
-</ul>
+<div class="docs-card">
+  <h3>Granny version matrix</h3>
+  <p>Halo Wars ships with Granny 2.1 and custom exporters. See the detailed table below.</p>
+</div>
 
-<h2 id="quick-start">Quick start</h2>
+<div class="docs-card docs-card--link">
+  <a href="/engine/formats/">
+    <span class="overview-card__status docs-hero__status docs-hero__status--stable">Stable</span>
+    <p class="docs-card__eyebrow">Formats overview</p>
+    <h3>Data formats</h3>
+    <p>Detailed tables for Granny, WWise, and custom engine archives.</p>
+  </a>
+</div>
 
-<ol>
-  <li>Download Haruspis.</li>
-  <li>Link your Halo Wars installation.</li>
-  <li>Browse the mod library, install with one click, and launch instantly.</li>
-</ol>
+<div class="docs-card docs-card--link">
+  <a href="/engine/granny/">
+    <span class="overview-card__status docs-hero__status docs-hero__status--stable">Stable</span>
+    <p class="docs-card__eyebrow">Granny pipeline</p>
+    <h3>Export notes</h3>
+    <p>Version matrix, exporters, and validation steps for the Granny toolchain.</p>
+  </a>
+</div>
+
+<div class="docs-card docs-card--link">
+  <a href="/engine/wwise/">
+    <span class="overview-card__status docs-hero__status docs-hero__status--stable">Stable</span>
+    <p class="docs-card__eyebrow">Audio / WWise</p>
+    <h3>Sound architecture</h3>
+    <p>WWise banks, event names, and how to keep your audio bundles in sync.</p>
+  </a>
+</div>
 
         </div>
       </main>
