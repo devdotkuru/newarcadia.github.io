@@ -1,0 +1,9 @@
+stable:
+  label: "Stable"
+  state: "stable"
+wip:
+  label: "Work In Progress"
+  state: "wip"
+deprecated:
+  label: "Deprecated"
+  state: "deprecated"

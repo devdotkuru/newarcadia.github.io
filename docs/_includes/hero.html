@@ -1,0 +1,46 @@
+<section class="docs-hero">
+  <div class="docs-hero__content">
+    <div class="docs-hero__copy">
+    {% if page.hero.subtitle or page.hero.status %}
+      <div class="docs-hero__subtitle-row">
+        {% if page.hero.subtitle %}
+          <p class="docs-hero__eyebrow">{{ page.hero.subtitle }}</p>
+        {% endif %}
+        {% if page.hero.status %}
+          <span class="docs-hero__status docs-hero__status--{{ page.hero.status.state | default: 'stable' }}">
+            {{ page.hero.status.label }}
+          </span>
+        {% endif %}
+      </div>
+    {% endif %}
+    <h1>{{ page.hero.title | default: page.title }}</h1>
+      {% if page.hero.description %}
+        <p class="docs-hero__lead">{{ page.hero.description }}</p>
+      {% endif %}
+      {% if page.hero.ctas %}
+        <div class="docs-hero__ctas">
+          {% for cta in page.hero.ctas %}
+            <a
+              class="cta docs-hero__cta {% if forloop.first %}primary{% else %}ghost{% endif %}"
+              href="{{ cta.url | relative_url }}"
+            >
+              {{ cta.label }}
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    {% if page.hero.badges %}
+      <div class="docs-hero__badges">
+        {% for badge in page.hero.badges %}
+          <div class="docs-hero__badge">
+            <span>{{ badge.label }}</span>
+            {% if badge.detail %}
+              <small>{{ badge.detail }}</small>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>

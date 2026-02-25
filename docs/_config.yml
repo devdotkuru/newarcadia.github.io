@@ -1,0 +1,9 @@
+title: "New Arcadia Docs"
+description: "New Arcadia docs hub for Halo Wars modding."
+baseurl: "/docs"
+url: "https://new-arcadia.github.io"
+markdown: kramdown
+plugins:
+  - jekyll-feed
+permalink: /:path/
+collections: {}

@@ -1,0 +1,219 @@
+.docs-card {
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  padding: 24px;
+  background: #0a1422;
+}
+
+.docs-card h2,
+.docs-card h3 {
+  margin-top: 0;
+}
+
+.docs-card p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.docs-alert {
+  border-radius: 12px;
+  border: 1px solid rgba(67, 138, 194, 0.4);
+  background: rgba(67, 138, 194, 0.07);
+  padding: 18px 20px;
+  color: #cce5ff;
+}
+
+.docs-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cta {
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cta.primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #fff;
+  border: none;
+  box-shadow: 0 12px 24px rgba(50, 84, 109, 0.35);
+}
+
+.cta.ghost {
+  border: 1px solid var(--border);
+  color: inherit;
+  background: transparent;
+}
+
+.cta:hover {
+  transform: translateY(-1px);
+}
+
+.docs-card--link {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.docs-card--link a {
+  display: block;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: #0a1422;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.docs-card--link a:hover {
+  border-color: var(--accent);
+  background: rgba(67, 138, 194, 0.08);
+  transform: translateY(-2px);
+}
+
+.docs-card__eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.docs-tip {
+  border-radius: 16px;
+  padding: 18px 22px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  display: grid;
+  gap: 8px;
+}
+
+.docs-tip__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.docs-tip__icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.docs-tip__title {
+  font-size: 12px;
+}
+
+.docs-tip--tip {
+  border-color: rgba(255, 197, 87, 0.5);
+  background: rgba(255, 197, 87, 0.08);
+}
+
+.docs-tip--warning {
+  border-color: rgba(255, 86, 86, 0.6);
+  background: rgba(255, 86, 86, 0.08);
+}
+
+.docs-tip--info {
+  border-color: rgba(67, 138, 194, 0.6);
+  background: rgba(67, 138, 194, 0.08);
+}
+
+.docs-tip-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top: 12px;
+}
+
+.overview-card {
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  padding: 24px;
+  background: #0a1525;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+}
+
+.overview-card__status {
+  align-self: flex-start;
+  margin-bottom: 6px;
+}
+
+.overview-card a {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.docs-checklist {
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.docs-checklist__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.docs-checklist__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  transition: border 0.2s ease, background 0.2s ease;
+}
+
+.docs-checklist__item::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.docs-checklist__item--complete::before {
+  background: rgba(67, 138, 194, 0.3);
+  border-color: rgba(67, 138, 194, 0.6);
+  box-shadow: 0 0 6px rgba(67, 138, 194, 0.4);
+}
+
+.docs-checklist__item--complete {
+  border-color: rgba(67, 138, 194, 0.2);
+}
+
+.docs-checklist__item--pending::before {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.docs-checklist__item--pending {
+  opacity: 0.9;
+}

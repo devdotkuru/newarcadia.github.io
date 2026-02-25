@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if page.title %}{{ page.title }} · New Arcadia{% else %}New Arcadia Docs{% endif %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ '/assets/css/theme.css' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/layout.css' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/sidebar.css' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/hero.css' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/components.css' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/tables.css' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/night-owl.css' | relative_url }}" />
+    <meta name="description" content="New Arcadia Halo Wars modding docs" />
+  </head>
+  <body class="docs-shell">
+    <div class="icon-sprite" aria-hidden="true">
+      {% include icons.svg %}
+    </div>
+    <div class="docs-shell__layout">
+      <aside class="docs-shell__sidebar">
+        <div class="sidebar-brand">
+          <span class="sidebar-brand__title">New Arcadia</span>
+          <span class="sidebar-brand__tag">Docs</span>
+        </div>
+        {% include sidebar.html %}
+      </aside>
+      <main class="docs-shell__main">
+        {% include hero.html %}
+        <div class="docs-content">
+          {{ content }}
+        </div>
+      </main>
+    </div>
+    <script src="{{ '/assets/js/sidebar.js' | relative_url }}"></script>
+  </body>
+</html>

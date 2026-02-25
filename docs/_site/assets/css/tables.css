@@ -1,0 +1,30 @@
+code,
+pre {
+  font-family: "Fira Code", "JetBrains Mono", monospace;
+}
+
+pre {
+  margin: 0;
+  border-radius: 14px;
+  padding: 18px;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+}
+
+.docs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.docs-table th,
+.docs-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.docs-table thead {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}

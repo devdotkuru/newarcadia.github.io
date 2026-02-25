@@ -1,0 +1,85 @@
+hub:
+  - eyebrow: "Guides"
+    title: "Guides overview"
+    description: "Guided walkthroughs for workspace setup, build flows, and troubleshooting the Halo Wars toolchain."
+    url: "/guides/"
+    status: wip
+  - eyebrow: "Tools"
+    title: "Tool stack"
+    description: "Haruspis launcher, Asset Bundler, and the Dev Kit keep your assets organized and playable."
+    url: "/tools/"
+    status: wip
+  - eyebrow: "Engine"
+    title: "Formats & pipelines"
+    description: "A table of Granny, WWise, and content formats with compatibility notes."
+    url: "/engine/"
+    status: stable
+  - eyebrow: "Community"
+    title: "Community hubs"
+    description: "Discord, forums, and collaboration threads where modders share releases and updates."
+    url: "/community/"
+    status: stable
+guides:
+  - eyebrow: "Getting started"
+    title: "Setup walkthrough"
+    description: "Install Haruspis, sync your workspace, and publish the first mod in minutes."
+    url: "/guides/getting-started/"
+    status: wip
+  - eyebrow: "Build workflows"
+    title: "Hands-on sequences"
+    description: "Run the SDK imports, debug loops, and asset inspections that keep releases stable."
+    url: "/guides/workflows/"
+    status: wip
+  - eyebrow: "Troubleshooting"
+    title: "Fixing issues"
+    description: "Logs, checks, and quick patches for the errors you see while modding Halo Wars."
+    url: "/guides/troubleshooting/"
+    status: stable
+tools:
+  - eyebrow: "Haruspis launcher"
+    title: "Discovery + installs"
+    description: "Browse the workshop and install mods with a single click."
+    url: "/tools/haruspis/"
+    status: stable
+  - eyebrow: "Asset Bundler"
+    title: "Pack assets"
+    description: "Convert textures, models, and metadata into Halo Wars-compatible bundles."
+    url: "/tools/bundler/"
+    status: wip
+  - eyebrow: "SDK Dev Kit"
+    title: "Diagnostics & packaging"
+    description: "Scripts for debugging, packaging, and automated QA workflows."
+    url: "/tools/devkit/"
+    status: wip
+engine:
+  - eyebrow: "Formats overview"
+    title: "Data formats"
+    description: "Detailed tables for Granny, WWise, and custom engine archives."
+    url: "/engine/formats/"
+    status: stable
+  - eyebrow: "Granny pipeline"
+    title: "Export notes"
+    description: "Version matrix, exporters, and validation steps for the Granny toolchain."
+    url: "/engine/granny/"
+    status: stable
+  - eyebrow: "Audio / WWise"
+    title: "Sound architecture"
+    description: "WWise banks, event names, and how to keep your audio bundles in sync."
+    url: "/engine/wwise/"
+    status: stable
+community:
+  - eyebrow: "Discord"
+    title: "Live chat"
+    description: "Hop into the New Arcadia Discord for releases, troubleshooting, and hangouts."
+    url: "https://www.new-arcadia.net/discord"
+    status: stable
+  - eyebrow: "Forums"
+    title: "Discussion threads"
+    description: "Long-form posts, an archive of builds, and collaborative design documents."
+    url: "https://www.new-arcadia.net/community"
+    status: stable
+  - eyebrow: "Contribute"
+    title: "Share your mod"
+    description: "Create posts, drop releases, and highlight community experiments."
+    url: "/community/"
+    status: wip

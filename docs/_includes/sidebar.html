@@ -1,0 +1,35 @@
+<nav class="sidebar-nav" aria-label="Documentation sections">
+  {% assign current_section = page.section | default: "home" %}
+  {% assign current_path = page.permalink | default: page.url %}
+  {% for section in site.data.sidebar %}
+    {% assign is_section_active = section.slug == current_section %}
+    <details class="sidebar-group{% if is_section_active %} is-open{% endif %}" {% if is_section_active %}open{% endif %}>
+      <summary class="sidebar-summary">
+        <span class="sidebar-summary-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <use xlink:href="#icon-{{ section.icon }}"></use>
+          </svg>
+        </span>
+        <span class="sidebar-summary-text">{{ section.title }}</span>
+        <span class="summary-arrow" aria-hidden="true"></span>
+      </summary>
+      {% assign overview_url = section.overview_url | default: section.url %}
+      {% assign overview_title = section.overview_title | default: "Overview" %}
+      <ul class="sidebar-list">
+        {% assign is_overview_active = current_path == overview_url %}
+        <li>
+          <a class="sidebar-link{% if is_overview_active %} is-current{% endif %}" href="{{ overview_url | relative_url }}">{{ overview_title }}</a>
+        </li>
+        {% if section.items %}
+          {% assign limited_items = section.items | slice: 0, 3 %}
+          {% for item in limited_items %}
+            {% assign is_active_item = current_path == item.url %}
+            <li>
+              <a class="sidebar-link{% if is_active_item %} is-current{% endif %}" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+            </li>
+          {% endfor %}
+        {% endif %}
+      </ul>
+    </details>
+  {% endfor %}
+</nav>
